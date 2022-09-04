@@ -4,11 +4,14 @@ import IngredientsForm from "./IngredientsForm/IngredientsForm.component";
 
 export default function CreateRecipe() {
   const [title, setTitle] = useState("");
+  const [cookingTime, setCookingTime] = useState('')
   const [stepsList, setStepsList] = useState([])
 
   return (
     <section>
-      <form>
+      <form onSubmit={(e) => {
+        e.preventDefault()
+        alert(title, cookingTime)}}>
         <label>
           <span>Title</span>
           <input
@@ -18,6 +21,16 @@ export default function CreateRecipe() {
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
+        <label>
+          <span>Cooking Time(in minutes):</span>
+          <input
+            type="number"
+            placeholder="Type here"
+            value={cookingTime}
+            onChange={(e) => setCookingTime(e.target.value)}
+          />
+        </label>
+        <button>SUbmit</button>
       </form>
       <IngredientsForm />
     </section>
