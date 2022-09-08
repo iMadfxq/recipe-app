@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./CreateRecipe.styles.scss";
 import IngredientsForm from "./IngredientsForm/IngredientsForm.component";
+import StepsForm from './StepsForm/StepsForm.component'
 
 export default function CreateRecipe() {
   const [title, setTitle] = useState("");
   const [cookingTime, setCookingTime] = useState('')
-  const [stepsList, setStepsList] = useState([])
 
   return (
     <section>
@@ -33,6 +33,7 @@ export default function CreateRecipe() {
         <button>SUbmit</button>
       </form>
       <IngredientsForm />
+      <StepsForm />
     </section>
   );
 }
