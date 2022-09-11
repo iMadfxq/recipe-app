@@ -2,10 +2,16 @@ import './IngredientsForm.styles.scss'
 
 import { useRef } from "react";
 import { useState } from "react";
+import { useContext } from 'react';
+import { PopupContext } from '../../../Contexts/PopupContext';
+
+import { POPUP_ACTION_TYPES } from '../../../Contexts/PopupContext';
 
 export default function IngredientsForm() {
   const [ingredient, setIngredient] = useState("");
   const [ingredientsList, setIngredientsList] = useState([]);
+
+  const {openPopup} = useContext(PopupContext)
 
   const ingredientInput = useRef(null);
 
@@ -35,11 +41,8 @@ export default function IngredientsForm() {
           <button onClick={addHandler}>Add</button>
         </label>
       </form>
-      <p>
-        Ingredients:{" "}
-        {ingredientsList.map((ing) => (
-          <span key={ing}>{ing}</span>
-        ))}
+      <p onClick={() => {openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS ,ingredientsList)}}>
+        Ingredients: {ingredientsList.length}
       </p>
     </section>
   );
