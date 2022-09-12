@@ -1,20 +1,24 @@
-import './StepsForm.styles.scss'
+import "./StepsForm.styles.scss";
 
-import { useRef } from "react";
-import { useState } from "react";
+import { useState, useContext, useRef } from "react";
+
+import { PopupContext } from "../../../Contexts/PopupContext";
+import { POPUP_ACTION_TYPES } from "../../../Contexts/PopupContext";
 
 export default function IngredientsForm() {
   const [step, setStep] = useState("");
-  const [stepsList, setStepsList] = useState([])
+  const [stepsList, setStepsList] = useState([]);
+
+  const { openPopup } = useContext(PopupContext);
 
   const stepInput = useRef(null);
 
   const addHandler = (e) => {
-    e.preventDefault()
-    let st = step.trim().toUpperCase();
+    e.preventDefault();
+    let text = step.trim().toUpperCase();
 
-    if (st && !stepsList.includes(st)) {
-      setStepsList((oldState) => [...oldState, st]);
+    if (text && !stepsList.includes(text)) {
+      setStepsList((oldState) => [...oldState, {text, id: Date.now()}]);
     }
     setStep("");
     stepInput.current.focus();
@@ -35,10 +39,13 @@ export default function IngredientsForm() {
           <button onClick={addHandler}>Add</button>
         </label>
       </form>
-      <p>
+      <p
+        onClick={() => {
+          openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_STEPS, {data:stepsList, setterFunc: setStepsList});
+        }}
+      >
         Number of steps: {stepsList.length}
       </p>
     </section>
   );
-
 }

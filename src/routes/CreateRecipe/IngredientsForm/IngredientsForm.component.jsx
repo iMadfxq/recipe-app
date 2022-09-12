@@ -17,10 +17,10 @@ export default function IngredientsForm() {
 
   const addHandler = (e) => {
     e.preventDefault()
-    let ing = ingredient.trim().toUpperCase();
+    let text = ingredient.trim().toUpperCase();
 
-    if (ing && !ingredientsList.includes(ing)) {
-      setIngredientsList((oldState) => [...oldState, ing]);
+    if (text && !ingredientsList.includes(text)) {
+      setIngredientsList((oldState) => [...oldState, {text, id: Date.now()}]);
     }
     setIngredient("");
     ingredientInput.current.focus();
@@ -41,7 +41,7 @@ export default function IngredientsForm() {
           <button onClick={addHandler}>Add</button>
         </label>
       </form>
-      <p onClick={() => {openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS ,ingredientsList)}}>
+      <p onClick={() => {openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS ,{data:ingredientsList, setterFunc: setIngredientsList})}}>
         Ingredients: {ingredientsList.length}
       </p>
     </section>
