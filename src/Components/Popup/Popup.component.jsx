@@ -7,25 +7,29 @@ import "./Popup.styles.scss";
 
 export default function Popup() {
   const { popupIsOpen, type, data, setterFunc } = useContext(PopupContext);
-  const [updated, setUpdated] = useState(false)
-  useEffect(() => {
-    setUpdated(!updated)
-  },[data])
+  
+  const [localListOfItems, setLocalListOfItems] = useState(data)
+
+  const closePopupHandler = () => {
+    
+  }
+  
   if (popupIsOpen) {
     switch (type) {
       case "ingredientsList":
         return (
           <section>
             <section>
+              <span onClick={closePopupHandler}>ⓧ</span>
               <h2>Ingredients:</h2>
               <ul>
-                {data.length &&
-                  data.map((ing) => (
+                {localListOfItems.length &&
+                  localListOfItems.map((ing) => (
                     <ListItem
                       key={ing.id}
                       item={ing}
-                      listOfItems={data}
-                      setListOfItems={setterFunc}
+                      listOfItems={localListOfItems}
+                      setListOfItems={setLocalListOfItems}
                     />
                   ))}
               </ul>

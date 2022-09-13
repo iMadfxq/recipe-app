@@ -6,7 +6,7 @@ export const PopupContext = createContext();
 export const POPUP_ACTION_TYPES = {
   OPEN_POPUP_INGREDIENTS: "OPEN_POPUP_INGREDIENTS",
   OPEN_POPUP_STEPS: "OPEN_POPUP_STEPS",
-  DATA_UPDATE: "DATA_UPDATE",
+  CLOSE_POPUP: 'CLOSE_POPUP'
 };
 
 const popupReducer = (state, action) => {
@@ -25,10 +25,12 @@ const popupReducer = (state, action) => {
         data: [...action.payload.data],
         setterFunc: action.payload.setterFunc,
       };
-    case "DATA_UPDATE":
+    case POPUP_ACTION_TYPES.CLOSE_POPUP:
       return {
-       ...state,
-       data: action.payload
+        popupIsOpen: false,
+        type: "",
+        data: [...action.payload],
+        setterFunc: null,
       };
 
     default:

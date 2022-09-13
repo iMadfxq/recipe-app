@@ -22,6 +22,7 @@ export default function ListItem({item, listOfItems, setListOfItems, phase}) {
       }
     })
     setListOfItems(newList)
+    // e.target.parentElement.classList.add('deleted')
   }
 
   return(
