@@ -2,63 +2,34 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { PopupContext } from "../../Contexts/PopupContext";
+import { POPUP_ACTION_TYPES } from "../../Contexts/PopupContext";
+import ItemsList from "../ItemsList/ItemsList.component";
 import ListItem from "../ListItem/ListItem.component";
+
 import "./Popup.styles.scss";
 
 export default function Popup() {
-  const { popupIsOpen, type, data, setterFunc } = useContext(PopupContext);
+  const { popupIsOpen, type, data, setterFunc, openPopup } = useContext(PopupContext);
   
   const [localListOfItems, setLocalListOfItems] = useState(data)
 
+  useEffect(() => {
+    setLocalListOfItems(data)
+    setterFunc([...data])
+  }, [data])
+
   const closePopupHandler = () => {
-    
+    openPopup(POPUP_ACTION_TYPES.CLOSE_POPUP, localListOfItems)
   }
   
   if (popupIsOpen) {
-    switch (type) {
-      case "ingredientsList":
-        return (
-          <section>
-            <section>
-              <span onClick={closePopupHandler}>ⓧ</span>
-              <h2>Ingredients:</h2>
-              <ul>
-                {localListOfItems.length &&
-                  localListOfItems.map((ing) => (
-                    <ListItem
-                      key={ing.id}
-                      item={ing}
-                      listOfItems={localListOfItems}
-                      setListOfItems={setLocalListOfItems}
-                    />
-                  ))}
-              </ul>
-            </section>
-          </section>
-        );
-      case "stepsList":
         return (
           <section>
             <section>
               <h2>Steps:</h2>
-              <ol>
-                {data.length &&
-                  data.map((stp) => (
-                    <ListItem
-                      key={stp.id}
-                      item={stp}
-                      listOfItems={data}
-                      setListOfItems={setterFunc}
-                    />
-                  ))}
-              </ol>
+              <ItemsList />
             </section>
           </section>
         );
-
-      default:
-        return <></>;
-    }
-  }
-  return;
+}
 }

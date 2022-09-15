@@ -29,8 +29,8 @@ const popupReducer = (state, action) => {
       return {
         popupIsOpen: false,
         type: "",
-        data: [...action.payload],
-        setterFunc: null,
+        data: action.payload,
+        setterFunc: state.setterFunc,
       };
 
     default:
