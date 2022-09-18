@@ -5,9 +5,8 @@ import { useState, useContext, useRef } from "react";
 import { PopupContext } from "../../../Contexts/PopupContext";
 import { POPUP_ACTION_TYPES } from "../../../Contexts/PopupContext";
 
-export default function IngredientsForm() {
+export default function IngredientsForm({setStepsList, stepsList}) {
   const [step, setStep] = useState("");
-  const [stepsList, setStepsList] = useState([]);
 
   const { openPopup } = useContext(PopupContext);
 

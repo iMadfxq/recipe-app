@@ -7,9 +7,8 @@ import { PopupContext } from '../../../Contexts/PopupContext';
 
 import { POPUP_ACTION_TYPES } from '../../../Contexts/PopupContext';
 
-export default function IngredientsForm() {
+export default function IngredientsForm({ingredientsList, setIngredientsList}) {
   const [ingredient, setIngredient] = useState("");
-  const [ingredientsList, setIngredientsList] = useState([]);
 
   const {openPopup} = useContext(PopupContext)
 
