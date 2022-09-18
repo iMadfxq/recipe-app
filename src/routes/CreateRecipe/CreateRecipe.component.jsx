@@ -19,7 +19,7 @@ const navigate = useNavigate()
         onSubmit={(e) => {
           e.preventDefault();
           setRecipesList((state) => {
-            return [...state, {title, cookingTime, stepsList, ingredientsList}]
+            return [...state, {title, cookingTime, stepsList, ingredientsList, id: Date.now()}]
           })
           setTimeout(() => {
             navigate('/recipes')

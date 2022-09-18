@@ -1,0 +1,27 @@
+.RecipeList {
+  display: flex;
+
+  &__item {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: purple;
+  margin: 20px;
+  color: white;
+  border-radius: 20px;
+  text-decoration: none;
+
+  h2 {
+    text-decoration: underline;
+  }
+  button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 100px;
+    height: 30px;
+  }
+}}

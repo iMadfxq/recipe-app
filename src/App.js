@@ -18,7 +18,7 @@ function App() {
         <Route index  element={<Home />} />
         <Route path="/CreateRecipe" element={<CreateRecipe setRecipesList={setRecipesList} />} />
         <Route path="/Recipes" element={<RecipeList recipesList={recipesList} />} />
-        <Route path="/Recipes/:id" element={<Recipe />} />
+        <Route path="/Recipes/:recipeId" element={<Recipe recipesList={recipesList}/>} />
       </Route>
     </Routes>
   );
