@@ -25,9 +25,10 @@ export default function IngredientsForm({setStepsList, stepsList}) {
 
   return (
     <section>
-      <form onSubmit={addHandler}>
+      <section>
         <label>
-          <input
+          <p>Steps:</p>
+          <textarea
             type="text"
             onChange={(e) => {
               setStep(e.target.value);
@@ -35,9 +36,9 @@ export default function IngredientsForm({setStepsList, stepsList}) {
             value={step}
             ref={stepInput}
           />
-          <button onClick={addHandler}>Add</button>
+          <button onClick={addHandler} >Add</button>
         </label>
-      </form>
+      </section>
       <p
         onClick={() => {
           openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_STEPS, {data:stepsList, setterFunc: setStepsList});

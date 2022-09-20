@@ -14,8 +14,8 @@ export default function CreateRecipe({setRecipesList}) {
 const navigate = useNavigate()
 
   return (
-    <section>
-      <form
+    <section className="CreateRecipe">
+      <form className="CreateRecipe__form"
         onSubmit={(e) => {
           e.preventDefault();
           setRecipesList((state) => {

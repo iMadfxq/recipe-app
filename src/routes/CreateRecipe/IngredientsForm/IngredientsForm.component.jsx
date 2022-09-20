@@ -27,9 +27,10 @@ export default function IngredientsForm({ingredientsList, setIngredientsList}) {
 
   return (
     <section>
-      <form onSubmit={addHandler}>
+      <section >
         <label>
-          <input
+          <p>Ingredients:</p>
+          <textarea
             type="text"
             onChange={(e) => {
               setIngredient(e.target.value);
@@ -39,9 +40,9 @@ export default function IngredientsForm({ingredientsList, setIngredientsList}) {
           />
           <button onClick={addHandler}>Add</button>
         </label>
-      </form>
+      </section>
       <p onClick={() => {openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS ,{data:ingredientsList, setterFunc: setIngredientsList})}}>
-        Ingredients: {ingredientsList.length}
+        Number of ingredients: {ingredientsList.length}
       </p>
     </section>
   );

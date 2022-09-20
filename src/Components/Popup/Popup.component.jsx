@@ -8,14 +8,15 @@ import ItemsList from "../ItemsList/ItemsList.component";
 import "./Popup.styles.scss";
 
 export default function Popup() {
-  const { popupIsOpen, type, data, setterFunc, openPopup } = useContext(PopupContext);
+  const { popupIsOpen, type, data, setterFunc, openPopup, closePopup } = useContext(PopupContext);
   
   
   if (popupIsOpen) {
         return (
           <section>
             <section>
-              <h2>Steps:</h2>
+              <span onClick={() => {closePopup()}}>x</span>
+              <h2>{type === 'ingredientsList' ? "Ingredients:" : "Steps"}</h2>
               <ItemsList />
             </section>
           </section>

@@ -27,10 +27,8 @@ const popupReducer = (state, action) => {
       };
     case POPUP_ACTION_TYPES.CLOSE_POPUP:
       return {
+        ...state,
         popupIsOpen: false,
-        type: "",
-        data: action.payload,
-        setterFunc: state.setterFunc,
       };
 
     default:
@@ -46,12 +44,16 @@ export function PopupProvider({ children }) {
     setterFunc: () => {},
   });
 
+  const closePopup = () => {
+    dispatch({ type: POPUP_ACTION_TYPES.CLOSE_POPUP});
+  }
+
   const openPopup = (actionType, data) => {
     dispatch({ type: actionType, payload: { ...data } });
   };
 
   return (
-    <PopupContext.Provider value={{ ...state, openPopup }}>
+    <PopupContext.Provider value={{ ...state, openPopup, closePopup }}>
       {children}
     </PopupContext.Provider>
   );
