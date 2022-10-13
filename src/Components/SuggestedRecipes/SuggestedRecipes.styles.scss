@@ -1,0 +1,14 @@
+.SuggestedRecipes {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+  font-size: 1.6rem;
+  }
+
+  &__list {
+    display: flex;
+  }
+}
