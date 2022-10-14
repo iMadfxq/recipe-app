@@ -27,7 +27,7 @@ const navigate = useNavigate()
         }}
       >
         <label>
-          <span>Title</span>
+          <p>Title</p>
           <input
             type="text"
             placeholder="Type here"
@@ -37,7 +37,7 @@ const navigate = useNavigate()
           />
         </label>
         <label>
-          <span>Cooking Time(in minutes):</span>
+          <p>Cooking Time(in minutes):</p>
           <input
             type="number"
             placeholder="Type here"
@@ -48,7 +48,7 @@ const navigate = useNavigate()
         </label>
       <IngredientsForm ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} />
       <StepsForm stepsList={stepsList} setStepsList={setStepsList} />
-      <button type="submit">SUbmit</button>
+      <button type="submit">Create this recipe</button>
       </form>
     </section>
   );

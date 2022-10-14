@@ -3,18 +3,45 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
+  height: 100vh;
 
   &__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+
+    p {
+      font-size: 2rem;
+    }
 
     label {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;  
+    align-items: flex-start;
+      
+      p {
+      margin-bottom: 10px;
+      }
+      input {
+        height: 30px;
+        width: 200px;
+        text-align: center;
+      font-size: 1.6rem;
+
+
+      }
     }
   }
+}
+
+.CreateRecipe__form > label {
+  margin-bottom: 20px;
+}
+.CreateRecipe__form > button {
+  width: 100%;
+  height: 30px;
+  font-size: 1.6rem;
 }

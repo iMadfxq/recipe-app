@@ -13,7 +13,7 @@ export default function Popup() {
   
   if (popupIsOpen) {
         return (
-          <section>
+          <section className="popup">
             <section>
               <span onClick={() => {closePopup()}}>x</span>
               <h2>{type === 'ingredientsList' ? "Ingredients:" : "Steps"}</h2>
