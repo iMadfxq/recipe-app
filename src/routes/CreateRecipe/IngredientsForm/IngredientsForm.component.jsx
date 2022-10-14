@@ -1,35 +1,38 @@
-import './IngredientsForm.styles.scss'
+import "./IngredientsForm.styles.scss";
 
 import { useRef } from "react";
 import { useState } from "react";
-import { useContext } from 'react';
-import { PopupContext } from '../../../Contexts/PopupContext';
+import { useContext } from "react";
+import { PopupContext } from "../../../Contexts/PopupContext";
 
-import { POPUP_ACTION_TYPES } from '../../../Contexts/PopupContext';
+import { POPUP_ACTION_TYPES } from "../../../Contexts/PopupContext";
 
-export default function IngredientsForm({ingredientsList, setIngredientsList}) {
+export default function IngredientsForm({
+  ingredientsList,
+  setIngredientsList,
+}) {
   const [ingredient, setIngredient] = useState("");
 
-  const {openPopup} = useContext(PopupContext)
+  const { openPopup } = useContext(PopupContext);
 
   const ingredientInput = useRef(null);
 
   const addHandler = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     let text = ingredient.trim().toUpperCase();
 
     if (text && !ingredientsList.includes(text)) {
-      setIngredientsList((oldState) => [...oldState, {text, id: Date.now()}]);
+      setIngredientsList((oldState) => [...oldState, { text, id: Date.now() }]);
     }
     setIngredient("");
     ingredientInput.current.focus();
   };
 
   return (
-    <section>
-      <section >
-        <label>
-          <p>Ingredients:</p>
+    <section className="IngredientsForm">
+      <label className="IngredientsForm__label">
+        <p>Add ingredients of your recipe:</p>
+        <div className="IngredientsForm__label--input">
           <textarea
             type="text"
             onChange={(e) => {
@@ -37,14 +40,21 @@ export default function IngredientsForm({ingredientsList, setIngredientsList}) {
             }}
             value={ingredient}
             ref={ingredientInput}
+            placeholder="Type here"
           />
           <button onClick={addHandler}>Add</button>
-        </label>
-      </section>
-      <p onClick={() => {openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS ,{data:ingredientsList, setterFunc: setIngredientsList})}}>
-        Number of ingredients: {ingredientsList.length}
+        </div>
+      </label>
+      <p
+        onClick={() => {
+          openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_INGREDIENTS, {
+            data: ingredientsList,
+            setterFunc: setIngredientsList,
+          });
+        }}
+      >
+        Number of ingredients added: {ingredientsList.length} <span>⌃</span>
       </p>
     </section>
   );
-
 }

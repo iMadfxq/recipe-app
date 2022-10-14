@@ -5,7 +5,7 @@ import { useState, useContext, useRef } from "react";
 import { PopupContext } from "../../../Contexts/PopupContext";
 import { POPUP_ACTION_TYPES } from "../../../Contexts/PopupContext";
 
-export default function IngredientsForm({setStepsList, stepsList}) {
+export default function StepsForm({ setStepsList, stepsList }) {
   const [step, setStep] = useState("");
 
   const { openPopup } = useContext(PopupContext);
@@ -17,17 +17,17 @@ export default function IngredientsForm({setStepsList, stepsList}) {
     let text = step.trim().toUpperCase();
 
     if (text && !stepsList.includes(text)) {
-      setStepsList((oldState) => [...oldState, {text, id: Date.now()}]);
+      setStepsList((oldState) => [...oldState, { text, id: Date.now() }]);
     }
     setStep("");
     stepInput.current.focus();
   };
 
   return (
-    <section>
-      <section>
-        <label>
-          <p>Steps:</p>
+    <section className="StepsForm">
+      <label className="StepsForm__label">
+        <p>Add steps of your recipe:</p>
+        <div className="StepsForm__label--input">
           <textarea
             type="text"
             onChange={(e) => {
@@ -35,16 +35,20 @@ export default function IngredientsForm({setStepsList, stepsList}) {
             }}
             value={step}
             ref={stepInput}
+            placeholder="Type here"
           />
-          <button onClick={addHandler} >Add</button>
-        </label>
-      </section>
+          <button onClick={addHandler}>Add</button>
+        </div>
+      </label>
       <p
         onClick={() => {
-          openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_STEPS, {data:stepsList, setterFunc: setStepsList});
+          openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_STEPS, {
+            data: stepsList,
+            setterFunc: setStepsList,
+          });
         }}
       >
-        Number of steps: {stepsList.length}
+        Number of steps added: {stepsList.length} <span>⌃</span>
       </p>
     </section>
   );

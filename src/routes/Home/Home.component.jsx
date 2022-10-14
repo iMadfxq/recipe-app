@@ -9,7 +9,7 @@ export default function Home() {
     <main className="home">
       <h2>React Recipe App</h2>
       <SuggestedRecipes />
-      <Link to='/recipes' className="home__all">See all recipes</Link>
+      <Link to='/createrecipe' className="home__all">Create a recipe</Link>
     </main>
   );
 }

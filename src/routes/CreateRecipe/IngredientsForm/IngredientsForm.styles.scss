@@ -1,0 +1,23 @@
+.IngredientsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__label--input {
+    display: flex;
+
+    textarea {
+      resize: none;
+      text-align: center;
+      height: 40px;
+      font-size: 1.6rem;
+      padding-top: 8px;
+    }
+  }
+  p {
+    display: flex;
+  span {
+    transform: rotate(90deg);
+  }}
+}
