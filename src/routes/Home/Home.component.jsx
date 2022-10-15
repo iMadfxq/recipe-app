@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 
 import SuggestedRecipes from "../../Components/SuggestedRecipes/SuggestedRecipes.component";
 
+
 export default function Home() {
+
   return (
     <main className="home">
       <h2>React Recipe App</h2>

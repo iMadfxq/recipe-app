@@ -13,7 +13,7 @@ export default function RecipeList({ recipesList }) {
       <SuggestedRecipes />
       <section className="RecipeList__user">
         {recipesList.map((recipe) => (
-          <Link to={`${recipe.id}`} className="RecipeList__user--item">
+          <Link to={`${recipe.id}`} className="RecipeList__user--item" key={recipe.id}>
             <h2>{recipe.title}</h2>
             <p>Cooking time: {recipe.cookingTime} minutes</p>
             <p>Number of ingredients: {recipe.ingredientsList.length}</p>
