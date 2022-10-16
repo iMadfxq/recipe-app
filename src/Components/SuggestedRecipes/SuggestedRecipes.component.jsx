@@ -38,6 +38,7 @@ export default function SuggestedRecipes() {
               className="SuggestedRecipes__list--item"
               key={recipe.id}
             >
+              <span>★</span>
               <h2>{recipe.title}</h2>
               <p>Cooking time: {recipe.cookingTime} minutes</p>
               <p>Number of ingredients: {recipe.ingredientsList.length}</p>
@@ -49,9 +50,6 @@ export default function SuggestedRecipes() {
           ))}
         </section>
       )}
-      <section className="SuggestedRecipes__list">
-        <p>**List of recipes from firebase**</p>
-      </section>
     </section>
   );
 }
