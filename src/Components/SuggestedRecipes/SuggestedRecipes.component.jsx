@@ -18,7 +18,7 @@ export default function SuggestedRecipes() {
         <section className="SuggestedRecipes__list">
           {data.filter(r => r.byDeveloper).map((recipe) => (
             <Link
-              to={`${recipe.id}`}
+              to={`/Recipes/${recipe.id}`}
               className="SuggestedRecipes__list--item"
               key={recipe.id}
             >
