@@ -10,5 +10,9 @@
 
   &__list {
     display: flex;
+    a {
+      border: 1px solid black;
+      margin: 10px;
+    }
   }
 }
