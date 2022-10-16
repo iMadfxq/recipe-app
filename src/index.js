@@ -5,13 +5,16 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { PopupProvider } from "./Contexts/PopupContext";
+import { RecipesProvider } from "./Contexts/RecipesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <PopupProvider>
-      <App />
-    </PopupProvider>
+    <RecipesProvider>
+      <PopupProvider>
+        <App />
+      </PopupProvider>
+    </RecipesProvider>
   </BrowserRouter>
 );
 

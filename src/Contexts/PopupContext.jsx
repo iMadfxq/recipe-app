@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useReducer } from "react";
 import { createContext } from "react";
 
@@ -37,6 +38,7 @@ const popupReducer = (state, action) => {
 };
 
 export function PopupProvider({ children }) {
+
   const [state, dispatch] = useReducer(popupReducer, {
     popupIsOpen: false,
     type: "",

@@ -3,27 +3,11 @@ import { projectFirestore } from "../../firebase/config";
 import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { RecipesContext } from "../../Contexts/RecipesContext";
 
 export default function SuggestedRecipes() {
-  const [data, setData] = useState(null);
-  const [isPending, setIsPending] = useState(false);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setIsPending(true);
-
-    projectFirestore.collection('suggestedRecipes').get().then((snapshot => {
-      let results = []
-      snapshot.docs.forEach((doc) => {
-        results.push({ id: doc.id, ...doc.data()})
-      })
-      setData(results)
-      setIsPending(false)
-    })).catch(err => {
-      setError(err)
-      setIsPending(false)
-    })
-  }, []);
+  const {data, error, isPending} = useContext(RecipesContext)
 
   return (
     <section className="SuggestedRecipes">
