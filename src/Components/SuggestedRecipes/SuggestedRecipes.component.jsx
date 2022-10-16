@@ -16,7 +16,7 @@ export default function SuggestedRecipes() {
       {error && <p>{error}</p>}
       {data && (
         <section className="SuggestedRecipes__list">
-          {data.map((recipe) => (
+          {data.filter(r => r.byDeveloper).map((recipe) => (
             <Link
               to={`${recipe.id}`}
               className="SuggestedRecipes__list--item"
