@@ -9,28 +9,24 @@ import "./Recipe.styles.scss";
 export default function Recipe() {
   const [recipe, setRecipe] = useState(null);
   const [error, setError] = useState(false);
-  const [isPending, setIsPending] = useState(true);
 
   const { recipeId } = useParams();
+  const {data} = useContext(RecipesContext)
+  
+  
   useEffect(() => {
-    projectFirestore
-      .collection("suggestedRecipes")
-      .doc(recipeId)
-      .get()
-      .then((rec) => {
-        if (rec.exists) {
-          setRecipe(rec.data());
-          setIsPending(false);
-        } else {
-          setError("Looks like that recipe doesn't exist");
-          setIsPending(false);
-        }
-      });
-  }, []);
-  console.log(recipeId);
+    if(data) {
+      let idMatches = data.filter(recipe => recipe.id == recipeId)
+      if(idMatches.length) {
+        setRecipe(...idMatches)
+      } else {
+        setError("Sorry, we couldn't find that recipe")
+      }
+    }
+  }, [recipeId, data])
+
   return (
     <main className="recipe">
-      {isPending && <p>Loading...</p>}
       {recipe && (
         <div>
           <h2>{recipe.title}</h2>

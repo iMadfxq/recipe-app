@@ -1,7 +1,4 @@
 import "./SuggestedRecipes.styles.scss";
-import { projectFirestore } from "../../firebase/config";
-import { useEffect } from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { RecipesContext } from "../../Contexts/RecipesContext";
