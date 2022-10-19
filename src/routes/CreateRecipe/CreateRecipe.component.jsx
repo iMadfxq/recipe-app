@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../Contexts/UserContext";
 import { projectFirestore } from "../../firebase/config";
 
 import "./CreateRecipe.styles.scss";
@@ -11,6 +12,8 @@ export default function CreateRecipe({setRecipesList}) {
   const [cookingTime, setCookingTime] = useState("");
   const [stepsList, setStepsList] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
+
+  const {author, machineId} = useContext(UserContext)
 
 const navigate = useNavigate()
 
@@ -27,7 +30,7 @@ const navigate = useNavigate()
           stepsList.map(stp => {
             stList.push(stp.text.toLowerCase())
           })
-          projectFirestore.collection('suggestedRecipes').add({title, cookingTime, stepsList:stList, ingredientsList:ingList, byDeveloper : false})
+          projectFirestore.collection('suggestedRecipes').add({title, cookingTime, stepsList:stList, ingredientsList:ingList, byDeveloper : false, author, machineId})
           setTimeout(() => {
             navigate('/recipes')
           }, 300)

@@ -38,6 +38,7 @@ const userReducer = (state, action) => {
       setMachineId(mId)
     } else {
       setMachineId(localStorage.getItem('machineId'))
+      setAuthor(localStorage.getItem('author'))
     }
   }, []);
 
