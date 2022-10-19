@@ -6,15 +6,18 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 import { PopupProvider } from "./Contexts/PopupContext";
 import { RecipesProvider } from "./Contexts/RecipesContext";
+import { UserProvider } from "./Contexts/UserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <RecipesProvider>
-      <PopupProvider>
-        <App />
-      </PopupProvider>
-    </RecipesProvider>
+    <UserProvider>
+      <RecipesProvider>
+        <PopupProvider>
+          <App />
+        </PopupProvider>
+      </RecipesProvider>
+    </UserProvider>
   </BrowserRouter>
 );
 

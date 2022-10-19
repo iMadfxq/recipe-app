@@ -7,7 +7,8 @@ export const PopupContext = createContext();
 export const POPUP_ACTION_TYPES = {
   OPEN_POPUP_INGREDIENTS: "OPEN_POPUP_INGREDIENTS",
   OPEN_POPUP_STEPS: "OPEN_POPUP_STEPS",
-  CLOSE_POPUP: 'CLOSE_POPUP'
+  CLOSE_POPUP: 'CLOSE_POPUP',
+  OPEN_POPUP_AUTHOR: 'OPEN_POPUP_AUTHOR'
 };
 
 const popupReducer = (state, action) => {
@@ -31,6 +32,12 @@ const popupReducer = (state, action) => {
         ...state,
         popupIsOpen: false,
       };
+    case POPUP_ACTION_TYPES.OPEN_POPUP_AUTHOR:
+      return {
+        ...state,
+        popupIsOpen: true,
+        type: "author",
+      }
 
     default:
       return state;

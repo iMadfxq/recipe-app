@@ -6,9 +6,20 @@ import CreateRecipe from "./routes/CreateRecipe/CreateRecipe.component";
 import Recipe from "./routes/Recipe/Recipe.component";
 import RecipeList from "./routes/RecipeList/RecipeList.component";
 import Nav from "./routes/Nav/Nav.component";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { PopupContext } from "./Contexts/PopupContext";
+import { POPUP_ACTION_TYPES } from "./Contexts/PopupContext";
 
 function App() {
+
+  const {openPopup} = useContext(PopupContext)
+
+  useEffect(() => {
+    if(!localStorage.getItem('author')){
+      openPopup(POPUP_ACTION_TYPES.OPEN_POPUP_AUTHOR, {author: true})
+    }
+  }, [])
 
   const [recipesList, setRecipesList] = useState([])
 
