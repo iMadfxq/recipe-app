@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { projectFirestore } from "../../firebase/config";
 
 import "./CreateRecipe.styles.scss";
 import IngredientsForm from "./IngredientsForm/IngredientsForm.component";
@@ -18,12 +19,18 @@ const navigate = useNavigate()
       <form className="CreateRecipe__form"
         onSubmit={(e) => {
           e.preventDefault();
-          setRecipesList((state) => {
-            return [...state, {title, cookingTime, stepsList, ingredientsList, id: Date.now()}]
+          let ingList = []
+          ingredientsList.map(ing => {
+            ingList.push(ing.text.toLowerCase())
           })
+          let stList = []
+          stepsList.map(stp => {
+            stList.push(stp.text.toLowerCase())
+          })
+          projectFirestore.collection('suggestedRecipes').add({title, cookingTime, stepsList:stList, ingredientsList:ingList, byDeveloper : false})
           setTimeout(() => {
             navigate('/recipes')
-          }, 500)
+          }, 300)
         }}
       >
         <label>
