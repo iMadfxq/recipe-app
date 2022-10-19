@@ -1,3 +1,40 @@
 .recipe {
-  margin-top: 100px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 1.8rem;
+
+    h2 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      font-weight: 900;
+    }
+
+    li {
+      margin-left: 40px;
+    }
+
+    p {
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    &--cookingtime span {
+      font-weight: 500;
+      
+    }
+    
+  }
+}
+.recipe .recipe__content--cookingtime {
+  margin-bottom: 10px;
 }

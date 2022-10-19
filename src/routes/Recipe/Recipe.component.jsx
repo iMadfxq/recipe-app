@@ -28,9 +28,9 @@ export default function Recipe() {
   return (
     <main className="recipe">
       {recipe && (
-        <div>
+        <div className="recipe__content">
           <h2>{recipe.title}</h2>
-          <p>Cooking time: {recipe.cookingTime} minutes</p>
+          <p className="recipe__content--cookingtime">Cooking time: <span>{recipe.cookingTime} minutes</span> </p>
           <div>
             <p>Ingredients:</p>
             <ul>
