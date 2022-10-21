@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import SuggestedRecipes from "../../Components/SuggestedRecipes/SuggestedRecipes.component";
 import { RecipesContext } from "../../Contexts/RecipesContext";
 import { UserContext } from "../../Contexts/UserContext";
+import { projectFirestore } from "../../firebase/config";
 
 export default function RecipeList({ recipesList }) {
   const { data } = useContext(RecipesContext);
@@ -26,6 +27,10 @@ export default function RecipeList({ recipesList }) {
             className="RecipeList__user--item"
             key={recipe.id}
           >
+            <span onClick={(e) => {
+              e.preventDefault()
+              projectFirestore.collection('suggestedRecipes').doc(recipe.id).delete()
+            }}>delete</span>
             <h2>{recipe.title}</h2>
             <p>Cooking time: {recipe.cookingTime} minutes</p>
             <p>Number of ingredients: {recipe.ingredientsList.length}</p>
