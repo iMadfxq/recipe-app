@@ -58,3 +58,10 @@
   margin-left: 5px;
   font-weight: 300;
 }
+
+@media only screen and (max-height: 800px) {
+  .CreateRecipe {
+    justify-content: flex-start;
+    margin-top: 100px;
+  }
+}

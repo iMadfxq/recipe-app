@@ -32,19 +32,14 @@ export default function ItemsList() {
     }
   };
 
-  const completeHandler = (e) => {
-    e.target.parentElement.classList.toggle("completed");
-  };
-
   if (type === "ingredientsList") {
     return (
       <ul>
         {data.length ? (
           data.map((ing) => (
             <li data-id={ing.id}>
-              <span onClick={completeHandler}>✅</span>
-              <p>{ing.text}</p>
-              <span onClick={deleteHandler}>❌</span>
+              <p>{ing.text}  <span onClick={deleteHandler}>❌</span></p>
+             
             </li>
           ))
         ) : (
@@ -58,9 +53,8 @@ export default function ItemsList() {
         {data.length ? (
           data.map((stp) => (
             <li data-id={stp.id}>
-              <span onClick={completeHandler}>✅</span>
-              <p>{stp.text}</p>
-              <span onClick={deleteHandler}>❌</span>
+              <p>{stp.text} <span onClick={deleteHandler}>❌</span></p>
+              
             </li>
           ))
         ) : (

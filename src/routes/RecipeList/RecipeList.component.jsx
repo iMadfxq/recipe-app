@@ -16,12 +16,15 @@ export default function RecipeList({ recipesList }) {
     (recipe) => recipe.machineId == machineId
   );
 
+  let otherPeopleCreatedRecipes = data.filter((r) => r.machineId != machineId && r.byDeveloper == false)
+
   return (
     <main className="RecipeList">
+      <h1>All recipes: </h1>
       <SuggestedRecipes />
       <h2>Created by you:</h2>
       <section className="RecipeList__user">
-        {userCreatedRecipes.map((recipe) => (
+        {userCreatedRecipes.length ? userCreatedRecipes.map((recipe) => (
           <Link
             to={`/Recipes/${recipe.id}`}
             className="RecipeList__user--item"
@@ -39,13 +42,12 @@ export default function RecipeList({ recipesList }) {
             
             <button>See recipe</button>
           </Link>
-        ))}
+        )) : <p style={{fontSize: '2rem', textAlign:'center'}}>You haven't created any recipes yet :(</p>}
       </section>
       <h2>Created by other users: </h2>
       <section className="RecipeList__user">
-        {data
-          .filter((r) => r.machineId != machineId && r.byDeveloper == false)
-          .map((recipe) => (
+        {otherPeopleCreatedRecipes.length ? 
+          otherPeopleCreatedRecipes.map((recipe) => (
             <Link
               to={`/Recipes/${recipe.id}`}
               className="RecipeList__user--item"
@@ -58,7 +60,7 @@ export default function RecipeList({ recipesList }) {
                 <p>Number of steps: <span> {recipe.stepsList.length}</span></p>
               <button>See recipe</button>
             </Link>
-          ))}
+          )) : <p style={{fontSize: '2rem', textAlign:'center'}}>There are no recipes created by other users :(</p>}
       </section>
     </main>
   );

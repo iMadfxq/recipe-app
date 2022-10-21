@@ -19,6 +19,7 @@ const navigate = useNavigate()
 
   return (
     <section className="CreateRecipe">
+      <h1>Create a recipe: </h1>
       <form className="CreateRecipe__form"
         onSubmit={(e) => {
           e.preventDefault();
@@ -38,7 +39,7 @@ const navigate = useNavigate()
       >
         <p className="author">Author: <span>{author}</span></p>
         <label>
-          <p>Title</p>
+          <p>Title:</p>
           <input
             type="text"
             placeholder="Type here"
