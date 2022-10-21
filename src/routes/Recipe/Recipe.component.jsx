@@ -30,6 +30,7 @@ export default function Recipe() {
       {recipe && (
         <div className="recipe__content">
           <h2>{recipe.title}</h2>
+          <p>Author: <span>{recipe.author}</span></p>
           <p className="recipe__content--cookingtime">Cooking time: <span>{recipe.cookingTime} minutes</span> </p>
           <div>
             <p>Ingredients:</p>

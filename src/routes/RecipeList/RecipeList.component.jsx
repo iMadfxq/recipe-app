@@ -30,13 +30,13 @@ export default function RecipeList({ recipesList }) {
             <span onClick={(e) => {
               e.preventDefault()
               projectFirestore.collection('suggestedRecipes').doc(recipe.id).delete()
-            }}>delete</span>
-            <h2>{recipe.title}</h2>
-            <p>Cooking time: {recipe.cookingTime} minutes</p>
-            <p>Number of ingredients: {recipe.ingredientsList.length}</p>
-            <div>
-              <p>Number of steps: {recipe.stepsList.length}</p>
-            </div>
+            }} title='Delete' >❌</span>
+            <h3>{recipe.title}</h3>
+            <p>Cooking time: <span>{recipe.cookingTime} minutes</span></p>
+            <p>Number of ingredients: <span> {recipe.ingredientsList.length}</span></p>
+            
+              <p>Number of steps: <span>{recipe.stepsList.length}</span> </p>
+            
             <button>See recipe</button>
           </Link>
         ))}
@@ -51,12 +51,11 @@ export default function RecipeList({ recipesList }) {
               className="RecipeList__user--item"
               key={recipe.id}
             >
-              <h2>{recipe.title}</h2>
-              <p>Cooking time: {recipe.cookingTime} minutes</p>
-              <p>Number of ingredients: {recipe.ingredientsList.length}</p>
-              <div>
-                <p>Number of steps: {recipe.stepsList.length}</p>
-              </div>
+              <h3>{recipe.title}</h3>
+              <p>Cooking time: <span> {recipe.cookingTime} minutes</span></p>
+              <p>Number of ingredients: <span>{recipe.ingredientsList.length}</span> </p>
+              
+                <p>Number of steps: <span> {recipe.stepsList.length}</span></p>
               <button>See recipe</button>
             </Link>
           ))}

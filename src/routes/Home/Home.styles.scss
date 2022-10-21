@@ -1,14 +1,14 @@
 .home {
   width: 100%;
   min-height: 100vh;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 80px;
   padding: 20px;
 
-  h2 {
+  h1 {
     font-size: 3.6rem;
     margin-bottom: 20px;
     background-color: purple;
@@ -25,5 +25,18 @@
     padding: 10px;
     border-radius: 10px;
     font-size: 2rem;
+    border: 5px rgb(202, 114, 249) solid;
+    width: 270px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 924px) {
+  .home {
+    margin-top: 100px;
+
+    
   }
 }

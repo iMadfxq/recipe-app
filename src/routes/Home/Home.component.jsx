@@ -8,12 +8,9 @@ import { UserContext } from "../../Contexts/UserContext";
 
 
 export default function Home() {
-const {machineId, author} = useContext(UserContext)
   return (
     <main className="home">
-      <h2>React Recipe App</h2>
-      <p>{machineId}</p>
-      <p>{author}</p>
+      <h1>React Recipe App</h1>
       <SuggestedRecipes />
       <Link to='/createrecipe' className="home__create">Create a recipe</Link>
     </main>

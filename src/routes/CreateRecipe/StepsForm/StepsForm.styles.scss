@@ -8,9 +8,7 @@
 
   &__label--input {
     display: flex;
-  margin-bottom: 5px;
-
-
+    margin-bottom: 5px;
 
     textarea {
       resize: none;
@@ -26,16 +24,23 @@
       height: 30px;
       font-size: 1.6rem;
       margin-left: 4px;
+      background-color: purple;
+      color: white;
+      border-radius: 10px;
+      border: 1px rgb(202, 114, 249) solid;
+      font-weight: 700;
+      text-align: center;
     }
   }
   p {
-
     display: flex;
     align-items: center;
-  span {
-    transform: rotate(90deg);
-    font-size: 3rem;
-  }}
+    span {
+      transform: rotate(90deg);
+      font-size: 2.6rem;
+      font-weight: 700;
+    }
+  }
 }
 .StepsForm > p {
   font-size: 1.8rem;

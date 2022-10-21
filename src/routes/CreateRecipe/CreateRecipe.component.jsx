@@ -36,6 +36,7 @@ const navigate = useNavigate()
           }, 300)
         }}
       >
+        <p className="author">Author: <span>{author}</span></p>
         <label>
           <p>Title</p>
           <input
@@ -47,7 +48,7 @@ const navigate = useNavigate()
           />
         </label>
         <label>
-          <p>Cooking Time(in minutes):</p>
+          <p>Cooking Time (in minutes):</p>
           <input
             type="number"
             placeholder="Type here"

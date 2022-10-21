@@ -8,7 +8,7 @@ export default function SuggestedRecipes() {
 
   return (
     <section className="SuggestedRecipes">
-      <p>Recipes suggested by iMadfxq: </p>
+      <h2>Recipes suggested by iMadfxq: </h2>
       {isPending && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {data && (
@@ -20,12 +20,10 @@ export default function SuggestedRecipes() {
               key={recipe.id}
             >
               <span>★</span>
-              <h2>{recipe.title}</h2>
-              <p>Cooking time: {recipe.cookingTime} minutes</p>
-              <p>Number of ingredients: {recipe.ingredientsList.length}</p>
-              <div>
-                <p>Number of steps: {recipe.stepsList.length}</p>
-              </div>
+              <h3>{recipe.title}</h3>
+              <p>Cooking time: <span>{recipe.cookingTime} minutes</span></p>
+              <p>Number of ingredients: <span>{recipe.ingredientsList.length}</span> </p>
+                <p>Number of steps: <span>{recipe.stepsList.length}</span></p>
               <button>See recipe</button>
             </Link>
           ))}

@@ -24,6 +24,12 @@
       height: 30px;
       font-size: 1.6rem;
       margin-left: 4px;
+      background-color: purple;
+      color: white;
+      border-radius: 10px;
+      border: 1px rgb(202, 114, 249) solid;
+      font-weight: 700;
+      text-align: center;
     }
   }
 
@@ -32,7 +38,8 @@
     align-items: center;
     span {
       transform: rotate(90deg);
-      font-size: 3rem;
+      font-size: 2.6rem;
+      font-weight: 700;
     }
   }
 }
