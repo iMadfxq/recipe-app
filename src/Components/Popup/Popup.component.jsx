@@ -14,6 +14,7 @@ export default function Popup() {
     useContext(PopupContext);
 
   const [authorName, setAuthorName] = useState("");
+  const [authorError, setAuthorError] = useState(null)
 
   const inputRef = useRef(null);
 
@@ -55,10 +56,20 @@ export default function Popup() {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                setAuthor(authorName);
-                localStorage.setItem("author", authorName);
-                inputRef.current.blur();
-                closePopup();
+                const loweredAuthor = authorName.toLowerCase()
+                if(loweredAuthor !== 'imadfxq' && loweredAuthor != 'developer' && loweredAuthor != 'dev' && loweredAuthor != 'oscar gomez' && loweredAuthor != 'oscargomez' && loweredAuthor != 'imadfxq(oscar gomez)' && loweredAuthor != 'imadfxq(developer)') {
+                  setAuthor(authorName);
+                  localStorage.setItem("author", authorName);
+                  inputRef.current.blur();
+                  closePopup();
+                  return
+                  
+                } else {
+                  setAuthorName('')
+                  setAuthorError(true)
+                  return
+                }
+                return
               }}
             >
               <label>
@@ -78,6 +89,7 @@ export default function Popup() {
                   }}
                 />
                 <button>Done</button>
+                {authorError && <span style={{color: 'red', marginTop: '10px'}}>That username is not allowed, try another one</span>}
               </label>
             </form>
           </section>
