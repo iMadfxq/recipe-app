@@ -31,25 +31,25 @@ const recipesReducer = (state, action) => {
 
 export function RecipesProvider({ children }) {
   useEffect(() => {
-    projectFirestore
+    let unsub = projectFirestore
       .collection("suggestedRecipes")
-      .get()
-      .then((snapshot) => {
+      .onSnapshot((snapshot) => {
         let results = [];
         if (snapshot.empty) {
-          setError("Looks like the developer has no suggestions :(");
+          setError("Looks like there are no recipes :(");
           return;
         }
         snapshot.docs.forEach((doc) => {
           results.push({ id: doc.id, ...doc.data() });
         });
         setData(results);
-      })
-      .catch((err) => {
-        setError(err);
+      }, (er) => {
+        setError('There was an error fetching the data: '+ er)
       });
-  }, []);
 
+      return () => {unsub()}
+  }, []);
+ 
   const [state, dispatch] = useReducer(recipesReducer, {
     data: null,
     error: null,
