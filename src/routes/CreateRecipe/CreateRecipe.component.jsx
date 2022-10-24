@@ -13,6 +13,7 @@ export default function CreateRecipe({setRecipesList}) {
   const [stepsList, setStepsList] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
 
+  const [error, setError] = useState(false)
   const {author, machineId} = useContext(UserContext)
 
 const navigate = useNavigate()
@@ -46,7 +47,11 @@ const navigate = useNavigate()
       <IngredientsForm ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} />
       <StepsForm stepsList={stepsList} setStepsList={setStepsList} />
       <button type="button" onClick={(e) => {
-          e.preventDefault();
+        e.preventDefault();
+        if(!title || !cookingTime || !ingredientsList.length || stepsList.length){
+          setError(true)
+          return
+        }
           let ingList = []
           ingredientsList.map(ing => {
             ingList.push(ing.text.toLowerCase())
@@ -60,6 +65,7 @@ const navigate = useNavigate()
             navigate('/recipes')
           }, 300)
         }}>Create this recipe</button>
+        {error && <p style={{color: 'red', textAlign: 'center'}}>Fill out all of the fields, add at least 1 ingredient and 1 step</p>}
       </section>
     </section>
   );

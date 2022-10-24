@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 300px;
   margin-top: 120px;
 
   &__form {
@@ -50,6 +50,8 @@
   font-size: 2.2rem;
   font-weight: 700;
   text-align: center;
+  cursor: pointer;
+
 }
 .author {
   margin-bottom: 10px;
