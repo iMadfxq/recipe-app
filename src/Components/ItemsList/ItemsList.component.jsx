@@ -55,7 +55,7 @@ export default function ItemsList() {
       <ol>
         {data.length ? (
           data.map((stp) => (
-            <li data-id={stp.id}>
+            <li data-id={stp.id} key={stp.id}>
               <p>{stp.text} <span onClick={deleteHandler}>❌</span></p>
               
             </li>

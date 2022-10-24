@@ -35,12 +35,12 @@ export default function Recipe() {
           <div>
             <p>Ingredients:</p>
             <ul>
-              {recipe.ingredientsList.map(ingredient => <li>{ingredient}</li>)}
+              {recipe.ingredientsList.map((ingredient, index) => <li key={index}>{ingredient}</li>)}
             </ul>
           </div>
           <div>
             <p>Steps:</p>
-            <ol>{recipe.stepsList.map(step => <li>{step}</li>)}</ol>
+            <ol>{recipe.stepsList.map((step, index) => <li key={index}>{step}</li>)}</ol>
           </div>
         </div>
       )}
