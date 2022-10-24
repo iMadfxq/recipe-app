@@ -27,8 +27,10 @@ export default function StepsForm({ setStepsList, stepsList }) {
     <section className="StepsForm">
       <label className="StepsForm__label">
         <p>Add steps of your recipe:</p>
-        <div className="StepsForm__label--input">
-          <textarea
+        <form className="StepsForm__label--input" onSubmit={(e) => {
+          addHandler(e)
+        }}>
+          <input
             type="text"
             onChange={(e) => {
               setStep(e.target.value);
@@ -38,7 +40,7 @@ export default function StepsForm({ setStepsList, stepsList }) {
             placeholder="Type here"
           />
           <button onClick={addHandler}>Add</button>
-        </div>
+        </form>
       </label>
       <p
         onClick={() => {

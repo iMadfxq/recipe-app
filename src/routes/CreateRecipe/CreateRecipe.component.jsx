@@ -20,22 +20,7 @@ const navigate = useNavigate()
   return (
     <section className="CreateRecipe">
       <h1>Create a recipe: </h1>
-      <form className="CreateRecipe__form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          let ingList = []
-          ingredientsList.map(ing => {
-            ingList.push(ing.text.toLowerCase())
-          })
-          let stList = []
-          stepsList.map(stp => {
-            stList.push(stp.text.toLowerCase())
-          })
-          projectFirestore.collection('suggestedRecipes').add({title, cookingTime, stepsList:stList, ingredientsList:ingList, byDeveloper : false, author, machineId})
-          setTimeout(() => {
-            navigate('/recipes')
-          }, 300)
-        }}
+      <section className="CreateRecipe__form"
       >
         <p className="author">Author: <span>{author}</span></p>
         <label>
@@ -60,8 +45,22 @@ const navigate = useNavigate()
         </label>
       <IngredientsForm ingredientsList={ingredientsList} setIngredientsList={setIngredientsList} />
       <StepsForm stepsList={stepsList} setStepsList={setStepsList} />
-      <button type="submit">Create this recipe</button>
-      </form>
+      <button type="button" onClick={(e) => {
+          e.preventDefault();
+          let ingList = []
+          ingredientsList.map(ing => {
+            ingList.push(ing.text.toLowerCase())
+          })
+          let stList = []
+          stepsList.map(stp => {
+            stList.push(stp.text.toLowerCase())
+          })
+          projectFirestore.collection('suggestedRecipes').add({title, cookingTime, stepsList:stList, ingredientsList:ingList, byDeveloper : false, author, machineId})
+          setTimeout(() => {
+            navigate('/recipes')
+          }, 300)
+        }}>Create this recipe</button>
+      </section>
     </section>
   );
 }

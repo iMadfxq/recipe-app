@@ -12,7 +12,7 @@ export default function ItemsList() {
   const deleteHandler = (e) => {
     e.stopPropagation();
     const newList = data.filter((item) => {
-      if (item.id == e.target.parentElement.dataset.id) {
+      if (item.id == e.target.parentElement.parentElement.dataset.id) {
         return false;
       } else {
         return true;
@@ -37,13 +37,16 @@ export default function ItemsList() {
       <ul>
         {data.length ? (
           data.map((ing) => (
-            <li data-id={ing.id}>
-              <p>{ing.text}  <span onClick={deleteHandler}>❌</span></p>
+            <li key={ing.id} data-id={ing.id}>
+              <p>{ing.text}  <span onClick={(e) => {
+                deleteHandler(e)
+                console.log(ing.text)
+              }}>❌</span></p>
              
             </li>
           ))
         ) : (
-          <p>You havent added any ingredients yet...</p>
+          <p style={{fontSize: '1.4rem'}}>You havent added any ingredients yet...</p>
         )}
       </ul>
     );
@@ -58,7 +61,7 @@ export default function ItemsList() {
             </li>
           ))
         ) : (
-          <p>You havent added any steps yet...</p>
+          <p style={{fontSize: '1.4rem'}}>You havent added any steps yet...</p>
         )}
       </ol>
     );

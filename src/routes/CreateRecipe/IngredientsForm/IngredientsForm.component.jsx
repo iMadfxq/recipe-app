@@ -32,8 +32,10 @@ export default function IngredientsForm({
     <section className="IngredientsForm">
       <label className="IngredientsForm__label">
         <p>Add ingredients of your recipe:</p>
-        <div className="IngredientsForm__label--input">
-          <textarea
+        <form className="IngredientsForm__label--input" onSubmit={(e) => {
+addHandler(e)
+        }}>
+          <input
             type="text"
             onChange={(e) => {
               setIngredient(e.target.value);
@@ -43,7 +45,7 @@ export default function IngredientsForm({
             placeholder="Type here"
           />
           <button onClick={addHandler}>Add</button>
-        </div>
+        </form>
       </label>
       <p
         onClick={() => {

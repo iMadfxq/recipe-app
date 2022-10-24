@@ -33,7 +33,9 @@ export default function Popup() {
           e.stopPropagation()
           closePopup()
         }}>
-          <section className="popup__message">
+          <section className="popup__message" onClick={(e) => {
+            e.stopPropagation()
+          }}>
             <span
               className="popup__message--close"
               onClick={() => {
